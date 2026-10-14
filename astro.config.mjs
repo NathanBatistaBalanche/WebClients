@@ -12,7 +12,7 @@ export default defineConfig({
     allowedDomains: [
       {
         protocol: "https",
-        hostname: "scolarite.<nomdomaine>.<tld>"
+        hostname: "clients.nathan-batista-balanche.fr"
       }
     ]
   },
