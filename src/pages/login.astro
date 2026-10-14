@@ -1,0 +1,257 @@
+---
+// src/pages/login.astro
+import SignIn from "../../node_modules/auth-astro/src/components/SignIn.astro";
+---
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Connexion | Dashboard</title>
+
+  <style>
+    :root {
+      --background: #f5f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #718096;
+      --border: #e7ebf2;
+      --primary: #4f46e5;
+      --primary-light: #eef2ff;
+      --shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .topbar {
+      height: 72px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+
+      display: flex;
+      align-items: center;
+
+      padding: 0 32px;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+
+      display: grid;
+      place-items: center;
+
+      background: var(--primary);
+      color: white;
+
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    /* =========================
+       LOGIN
+       ========================= */
+
+    main {
+      min-height: calc(100vh - 72px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 32px 16px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      box-shadow: var(--shadow);
+
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .login-icon {
+      width: 56px;
+      height: 56px;
+
+      margin: 0 auto 18px;
+
+      border-radius: 16px;
+
+      display: grid;
+      place-items: center;
+
+      background: var(--primary-light);
+      color: var(--primary);
+
+      font-size: 26px;
+    }
+
+    .login-card h1 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: -0.5px;
+    }
+
+    .login-card p {
+      margin: 8px 0 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /*
+     * Le bouton est généré par le composant SignIn :
+     * il n'a pas l'attribut de scope d'Astro, d'où :global().
+     */
+    .login-card :global(.google-btn) {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      padding: 12px 16px;
+
+      background: var(--primary);
+      color: white;
+
+      border: none;
+      border-radius: 12px;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .login-card :global(.google-btn:hover) {
+      background: #4338ca;
+    }
+
+    .login-card :global(.google-btn:focus-visible) {
+      outline: 3px solid var(--primary-light);
+      outline-offset: 2px;
+    }
+
+    .login-footer {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 800px) {
+      .topbar {
+        padding: 0 16px;
+      }
+
+      .login-card {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">📍</div>
+
+      <div>
+        <div class="brand-title">Clients</div>
+        <div class="brand-subtitle">Gestion géographique</div>
+      </div>
+    </div>
+
+  </header>
+
+  <main>
+
+    <section class="login-card">
+
+      <div class="login-icon">🔐</div>
+
+      <h1>Connexion</h1>
+
+      <p>
+        Connectez-vous pour accéder au tableau de bord.
+      </p>
+
+      <SignIn provider="google" class="google-btn">
+        Se connecter avec Google
+      </SignIn>
+
+      <div class="login-footer">
+        Connexion sécurisée via votre compte Google
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
