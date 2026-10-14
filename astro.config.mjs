@@ -8,7 +8,14 @@ export default defineConfig({
   adapter: node({
     mode: "standalone",
   }),
-
+  security: {
+    allowedDomains: [
+      {
+        protocol: "https",
+        hostname: "scolarite.<nomdomaine>.<tld>"
+      }
+    ]
+  },
   integrations: [auth()],
 
   vite: {
@@ -17,3 +24,4 @@ export default defineConfig({
     },
   },
 });
+
